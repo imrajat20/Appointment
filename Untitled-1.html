@@ -56,8 +56,7 @@
             description,
             category
         }
-      
-       axios.post('https://crudcrud.com/api/11d3c2eb104c4bec8fdc6fa1eb736b74/appointmentdata',obj).then((response)=>{
+       axios.post('https://crudcrud.com/api/01b431a0e3e14b1fab27056818a46e65/appointmentdata',obj).then((response)=>{
         showUserOnScreen(response.data)
         console.log(response)
        }).catch((err)=>{
@@ -68,6 +67,17 @@
         //  localStorage.setItem(obj.category ,JSON.stringify(obj))
         //showUserOnScreen(obj)
     }
+    window.addEventListener('DOMContentLoaded', ()=>{
+        axios.get('https://crudcrud.com/api/01b431a0e3e14b1fab27056818a46e65/appointmentdata')
+        .then((response)=>{
+            console.log(response);
+            for(var i=0;i<response.data.length;i++){
+                showUserOnScreen(response.data[i]);
+            }
+        })
+        
+        .catch((error)=>console.log(error));
+    })
     function showUserOnScreen(obj){
         const parent=document.getElementById('project')
         const child=document.createElement('li')
